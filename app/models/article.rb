@@ -9,6 +9,10 @@ class Article < ActiveRecord::Base
   before_save :generate_html
   before_save :generate_slug
 
+  def publish
+    self.published_at = Time.now
+  end
+
   def draft?
     published_at.nil?
   end

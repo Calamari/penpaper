@@ -1,24 +1,7 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @article.title %>
-</p>
+<h1><%= @article.title %></h1>
 
-<p>
-  <b>Text:</b>
-  <%= @article.text %>
-</p>
-
-<p>
-  <b>Html:</b>
-  <%= @article.html %>
-</p>
-
-<p>
-  <b>Published at:</b>
-  <%= @article.published_at %>
-</p>
+<%= @article.html.html_safe %>
 
 <p>
   <b>Slug:</b>

@@ -80,11 +80,17 @@ describe ArticlesController do
         post :create, {:article => valid_attributes}, valid_session
         assigns(:article).should be_a(Article)
         assigns(:article).should be_persisted
+        assigns(:article).should be_draft
+      end
+
+      it "with published flag makes it published" do
+        post :create, {:article => valid_attributes, :publish => ''}, valid_session
+        assigns(:article).should be_published
       end
 
       it "redirects to the created article" do
         post :create, {:article => valid_attributes}, valid_session
-        response.should redirect_to(article_path(:slug => Article.last.slug))
+        response.should redirect_to(show_article_path(:slug => Article.last.slug))
       end
     end
 
@@ -108,25 +114,32 @@ describe ArticlesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested article" do
-        article = Article.create! valid_attributes
         # Assuming there are no other articles in the database, this
         # specifies that the Article created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Article.any_instance.should_receive(:update_attributes).with({ "title" => "MyString" })
-        put :update, {:id => article.to_param, :article => { "title" => "MyString" }}, valid_session
+        put :update, {:id => draft.to_param, :article => { "title" => "MyString" }}, valid_session
       end
 
       it "assigns the requested article as @article" do
-        article = Article.create! valid_attributes
-        put :update, {:id => article.to_param, :article => valid_attributes}, valid_session
-        assigns(:article).should eq(article)
+        put :update, {:id => draft.to_param, :article => valid_attributes}, valid_session
+        assigns(:article).should eq(draft)
+      end
+
+      it "but without published flag is still is draft" do
+        put :update, {:id => draft.to_param, :article => valid_attributes}, valid_session
+        assigns(:article).should be_draft
+      end
+
+      it "with published flag makes it published" do
+        put :update, {:id => draft.to_param, :article => valid_attributes, :publish => ''}, valid_session
+        assigns(:article).should be_published
       end
 
       it "redirects to the article" do
-        article = Article.create! valid_attributes
-        put :update, {:id => article.to_param, :article => valid_attributes}, valid_session
-        response.should redirect_to(article_path(:slug => article.slug))
+        put :update, {:id => draft.to_param, :article => valid_attributes}, valid_session
+        response.should redirect_to(show_article_path(:slug => article.slug))
       end
     end
 

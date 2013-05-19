@@ -13,6 +13,14 @@ describe Article do
     it { subject.draft?.should be true }
   end
 
+  describe "#publish" do
+    let(:article) { Fabricate(:article) }
+
+    it "sets published_at attribute" do
+      article.publish
+      expect(article.published_at).not_to be nil
+    end
+  end
 
   describe "draft scope" do
     describe "when having no drafts" do

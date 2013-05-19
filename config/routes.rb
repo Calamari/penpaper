@@ -1,6 +1,6 @@
 Penpaper::Application.routes.draw do
   resources :articles, :except => :show
-  get '/:slug' => 'articles#show', :as => 'article'
+  get '/:slug' => 'articles#show', :as => 'show_article'
 
 
   # The priority is based upon order of creation:

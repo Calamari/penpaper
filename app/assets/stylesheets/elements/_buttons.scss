@@ -1,7 +1,8 @@
 @import "compass/css3/border-radius";
 @import "base/colors";
 
-button {
+button,
+.button {
   border: none;
   @include border-radius(2px);
   color: $white;
