@@ -1,21 +1,54 @@
-@import "base/reset";
 @import "base/colors";
 
 * {
   box-sizing: border-box;
   color: $black;
-  font-family: "Open Sans", Helvetica, Verdana, Arial, Sans-Serif;
-  font-size: 20px;
-  line-height: 1.45em;
 }
 
 body, html {
   background: $bg-color;
+  font-family: "ff-meta-serif-web-pro","Meta Serif Pro", Georgia, Times, Cambria, Serif;
   text-align: center;
+  font-size: 20px;
+  line-height: 1.5em;
 }
 
 .container {
   margin: 0 auto;
   text-align: left;
   width: 600px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Open Sans", Helvetica, Verdana, Arial, Sans-Serif;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 45px;
+  margin-bottom: 0.6em;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+p {
+  margin-bottom: 1.5em;
+}
+
+ul {
+  list-style-type: square;
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
+}
+
+ol {
+  list-style-type: decimal;
+  margin-bottom: 1.5em;
+  padding-left: 1.5em;
 }

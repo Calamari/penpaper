@@ -1,5 +1,6 @@
 @import "compass/css3/box-shadow";
 @import "base/colors";
+@import "base/general";
 
 .article-form {
   padding: 3em 0;
@@ -20,10 +21,7 @@
   }
 
   .title {
-    font-size: 30px;
-    font-weight: bold;
-    line-height: 45px;
-    margin-bottom: 0.6em;
+    @extend h1;
   }
 
   textarea {

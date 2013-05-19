@@ -28,7 +28,9 @@ class Article < ActiveRecord::Base
   private
 
   def generate_html
-    self.html = Kramdown::Document.new(text).to_html
+    self.html = Kramdown::Document.new(text, {
+      coderay_line_numbers: :table
+    }).to_html
   end
 
   def generate_slug
