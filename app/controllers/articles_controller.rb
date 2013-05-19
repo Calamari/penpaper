@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @article = Article.find_by_slug(params[:slug])
+    @article = Article.published.find_by_slug!(params[:slug])
 
     respond_to do |format|
       format.html # show.html.erb

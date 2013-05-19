@@ -16,8 +16,8 @@ describe Article do
 
   describe "draft scope" do
     describe "when having no drafts" do
-      let!(:article1) { Fabricate(:article, :published_at => Time.now) }
-      let!(:article2) { Fabricate(:article, :published_at => Time.now) }
+      let!(:article1) { Fabricate(:published_article) }
+      let!(:article2) { Fabricate(:published_article) }
 
       subject { Article.draft }
 
@@ -26,7 +26,7 @@ describe Article do
 
     describe "when having draft articles" do
       let!(:article1) { Fabricate(:article) }
-      let!(:article2) { Fabricate(:article, :published_at => Time.now) }
+      let!(:article2) { Fabricate(:published_article) }
 
       subject { Article.draft }
 
@@ -47,7 +47,7 @@ describe Article do
 
     describe "when having published articles" do
       let!(:article1) { Fabricate(:article) }
-      let!(:article2) { Fabricate(:article, :published_at => Time.now) }
+      let!(:article2) { Fabricate(:published_article) }
 
       subject { Article.published.all }
 

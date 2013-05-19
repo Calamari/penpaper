@@ -30,6 +30,9 @@ describe ArticlesController do
   # ArticlesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  let(:article) { Fabricate(:published_article) }
+  let(:draft) { Fabricate(:article) }
+
   describe "GET index" do
     it "assigns all articles as @articles" do
       article = Article.create! valid_attributes
@@ -40,9 +43,13 @@ describe ArticlesController do
 
   describe "GET show" do
     it "assigns the requested article as @article" do
-      article = Article.create! valid_attributes
       get :show, {:slug => article.slug}, valid_session
       assigns(:article).should eq(article)
+    end
+
+    it "shows 404 if aritlce is draft" do
+      get :show, {:slug => draft.slug}, valid_session
+      expect(response.status).to be 404
     end
   end
 
