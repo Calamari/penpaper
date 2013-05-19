@@ -3,6 +3,7 @@
 * {
   box-sizing: border-box;
   color: $black;
+  font-size: 20px;
 }
 
 body, html {
@@ -15,10 +16,26 @@ body, html {
 
 .container {
   margin: 0 auto;
+  position: relative;
   text-align: left;
-  width: 600px;
+  width: 900px;
+  padding-right: 300px;
 }
 
+.secondary {
+  border-left: 1px solid $grey;
+  margin: 0 auto;
+  padding: 3em 0 0 1em;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  text-align: left;
+}
+
+/*= Page elements
+ *---------------------------------------- */
 h1,
 h2,
 h3,
@@ -42,13 +59,9 @@ p {
 }
 
 ul {
-  list-style-type: square;
   margin-bottom: 1.5em;
-  padding-left: 1.5em;
 }
 
 ol {
-  list-style-type: decimal;
   margin-bottom: 1.5em;
-  padding-left: 1.5em;
 }

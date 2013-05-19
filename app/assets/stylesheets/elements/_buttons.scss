@@ -3,6 +3,7 @@
 
 button,
 .button {
+  background: $blue;
   border: none;
   @include border-radius(2px);
   color: $white;

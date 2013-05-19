@@ -20,6 +20,12 @@
     <% end %>
 
     <%= yield %>
+    <div class="secondary">
+      <p class="me-description">The minimal blog by <strong>Georg Tavonius</strong>, Webdeveloper, hobby photographer and human.</p>
+      <ul class="menu">
+        <li><%= link_to 'Write a post', new_article_path %></li>
+      </ul>
+    </div>
   </div>
 
 </body>
