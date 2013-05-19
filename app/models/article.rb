@@ -8,6 +8,7 @@ class Article < ActiveRecord::Base
 
   before_save :generate_html
   before_save :generate_slug
+  before_save :generate_teaser_html
 
   def publish
     self.published_at = Time.now
@@ -31,10 +32,18 @@ class Article < ActiveRecord::Base
 
   private
 
-  def generate_html
-    self.html = Kramdown::Document.new(text, {
+  def parse_markdown(text)
+    Kramdown::Document.new(text, {
       coderay_line_numbers: :table
     }).to_html
+  end
+
+  def generate_html
+    self.html = parse_markdown(text)
+  end
+
+  def generate_teaser_html
+    self.teaser_html = parse_markdown(teaser)
   end
 
   def generate_slug

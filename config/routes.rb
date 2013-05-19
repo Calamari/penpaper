@@ -1,4 +1,5 @@
 Penpaper::Application.routes.draw do
+  root :to => 'articles#index'
   resources :articles, :except => :show
   get '/:slug' => 'articles#show', :as => 'show_article'
 

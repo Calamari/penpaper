@@ -1,0 +1,9 @@
+<article>
+  <h1><%= link_to article.title, show_article_path(:slug => article.slug) %></h1>
+
+  <%- if defined? teaser-%>
+    <%= article.teaser_html.html_safe %>
+  <%- else -%>
+    <%= article.html.html_safe %>
+  <%- end -%>
+</article>

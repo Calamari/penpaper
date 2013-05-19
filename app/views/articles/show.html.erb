@@ -1,6 +1,2 @@
 
-<article>
-  <h1><%= link_to @article.title, show_article_path(:slug => @article.slug) %></h1>
-
-  <%= @article.html.html_safe %>
-</article>
+<%= render 'show', :article => @article %>

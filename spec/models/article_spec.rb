@@ -107,4 +107,21 @@ describe Article do
       expect(article_without_more.teaser).to eql short + text
     end
   end
+
+  describe "teaser_html attribute" do
+    let(:short) { "Here I go" }
+    let(:text) { "and more stuff" }
+    let(:article) { Fabricate.build(:article, :text => "#{short}<!--more-->#{text}") }
+    let(:article_without_more) { Fabricate.build(:article, :text => "#{short} #{text}") }
+
+    it "is created on save" do
+      expect(article.teaser_html).to be nil
+      article.save
+      expect(article.teaser_html).to eql "<p>#{short}</p>\n"
+
+      expect(article_without_more.teaser_html).to be nil
+      article_without_more.save
+      expect(article_without_more.teaser_html).to eql "<p>#{short} #{text}</p>\n"
+    end
+  end
 end
