@@ -21,8 +21,13 @@
 
   <div class="buttons">
     <div class="container">
-      <button class="publish" name="publish" type="submit">Publish</button>
-      <button class="draft" name="draft" type="submit">Save as draft</button>
+      <%- if @article.draft? -%>
+        <button class="publish" name="publish" type="submit">Publish</button>
+        <button class="draft" name="draft" type="submit">Save as draft</button>
+      <%- else -%>
+        <button class="publish" name="publish" type="submit">Edit</button>
+        <button class="draft" name="draft" type="submit">Unpublish</button>
+      <%- end -%>
       or <a class="cancel-link" href="/">cancel</a>
     </div>
   </div>

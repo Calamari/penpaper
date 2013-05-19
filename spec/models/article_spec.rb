@@ -22,6 +22,15 @@ describe Article do
     end
   end
 
+  describe "#unpublish" do
+    let(:article) { Fabricate(:published_article) }
+
+    it "unsets published_at attribute" do
+      article.unpublish
+      expect(article.published_at).to be nil
+    end
+  end
+
   describe "draft scope" do
     describe "when having no drafts" do
       let!(:article1) { Fabricate(:published_article) }

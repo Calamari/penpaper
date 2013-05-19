@@ -13,6 +13,10 @@ class Article < ActiveRecord::Base
     self.published_at = Time.now
   end
 
+  def unpublish
+    self.published_at = nil
+  end
+
   def draft?
     published_at.nil?
   end

@@ -80,17 +80,34 @@ describe ArticlesController do
         post :create, {:article => valid_attributes}, valid_session
         assigns(:article).should be_a(Article)
         assigns(:article).should be_persisted
-        assigns(:article).should be_draft
       end
 
-      it "with published flag makes it published" do
-        post :create, {:article => valid_attributes, :publish => ''}, valid_session
-        assigns(:article).should be_published
+      describe "without published flag" do
+        before do
+          post :create, {:article => valid_attributes}, valid_session
+        end
+
+        it "let it be a draft" do
+          assigns(:article).should be_draft
+        end
+
+        it "redirects to the edit article page" do
+          response.should redirect_to(edit_article_path(Article.last))
+        end
       end
 
-      it "redirects to the created article" do
-        post :create, {:article => valid_attributes}, valid_session
-        response.should redirect_to(show_article_path(:slug => Article.last.slug))
+      describe "with published flag" do
+        before do
+          post :create, {:article => valid_attributes, :publish => ''}, valid_session
+        end
+
+        it "makes it published" do
+          assigns(:article).should be_published
+        end
+
+        it "redirects to the created article" do
+          response.should redirect_to(show_article_path(:slug => Article.last.slug))
+        end
       end
     end
 
@@ -132,14 +149,32 @@ describe ArticlesController do
         assigns(:article).should be_draft
       end
 
-      it "with published flag makes it published" do
-        put :update, {:id => draft.to_param, :article => valid_attributes, :publish => ''}, valid_session
-        assigns(:article).should be_published
+      describe "with published flag" do
+        before do
+          put :update, {:id => draft.to_param, :article => valid_attributes, :publish => ''}, valid_session
+        end
+
+        it "makes it published" do
+          assigns(:article).should be_published
+        end
+
+        it "redirects to the article" do
+          response.should redirect_to(show_article_path(:slug => article.slug))
+        end
       end
 
-      it "redirects to the article" do
-        put :update, {:id => draft.to_param, :article => valid_attributes}, valid_session
-        response.should redirect_to(show_article_path(:slug => article.slug))
+      describe "with draft flag" do
+        before do
+          put :update, {:id => article.to_param, :article => valid_attributes, :draft => ''}, valid_session
+        end
+
+        it "makes it draft" do
+          assigns(:article).should be_draft
+        end
+
+        it "redirects to the edit article path" do
+          response.should redirect_to(edit_article_path(article))
+        end
       end
     end
 

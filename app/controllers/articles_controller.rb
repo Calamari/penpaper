@@ -41,12 +41,17 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
-    @article.publish unless params[:publish].nil?
+    publish_or_not
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to show_article_path(:slug => @article.slug), success: 'Article was successfully created.' }
-        format.json { render json: @article, status: :created, location: @article }
+        if @article.published?
+          flash[:success] = 'Article was successfully published.'
+          format.html { redirect_to show_article_path(:slug => @article.slug) }
+        else
+          flash[:success] = 'Article was successfully saved.'
+          format.html { redirect_to edit_article_path(@article) }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -58,12 +63,26 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.json
   def update
     @article = Article.find(params[:id])
-    @article.publish unless params[:publish].nil?
+    was_published = @article.published?
+    publish_or_not
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        format.html { redirect_to show_article_path(:slug => @article.slug), notice: 'Article was successfully updated.' }
-        format.json { head :no_content }
+        if @article.published?
+          if was_published
+            flash[:success] = 'Article was successfully updated.'
+          else
+            flash[:success] = 'Article was successfully published.'
+          end
+          format.html { redirect_to show_article_path(:slug => @article.slug) }
+        else
+          if was_published
+            flash[:success] = 'Article was successfully saved and unpublished.'
+          else
+            flash[:success] = 'Article was successfully saved.'
+          end
+          format.html { redirect_to edit_article_path(@article) }
+        end
       else
         format.html { render action: "edit" }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -81,5 +100,12 @@ class ArticlesController < ApplicationController
       format.html { redirect_to articles_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def publish_or_not
+    @article.publish unless params[:publish].nil?
+    @article.unpublish unless params[:draft].nil?
   end
 end
