@@ -5,7 +5,7 @@ describe Article do
     subject { Article.new }
 
     it { should have(1).error_on(:title) }
-    it { should have(1).error_on(:slug) }
+    it { should have(0).error_on(:slug) }
     it { should have(1).error_on(:text) }
     it { should have(0).error_on(:html) }
 
@@ -64,6 +64,18 @@ describe Article do
       expect(article.html).to be nil
       article.save
       expect(article.html).to eql result
+    end
+  end
+
+  describe "slug attribute" do
+    let(:title) { "I am a cool title" }
+    let(:result) { "i-am-a-cool-title" }
+    let!(:article) { Fabricate.build(:article, :title => title) }
+
+    it "is created on save" do
+      expect(article.slug).to be nil
+      article.save
+      expect(article.slug).to eql result
     end
   end
 end
