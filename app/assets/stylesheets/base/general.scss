@@ -1,0 +1,21 @@
+@import "base/reset";
+@import "base/colors";
+
+* {
+  box-sizing: border-box;
+  color: $black;
+  font-family: "Open Sans", Helvetica, Verdana, Arial, Sans-Serif;
+  font-size: 20px;
+  line-height: 1.45em;
+}
+
+body, html {
+  background: $bg-color;
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+  text-align: left;
+  width: 600px;
+}

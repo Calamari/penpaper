@@ -1,0 +1,53 @@
+@import "compass/css3/box-shadow";
+@import "base/colors";
+
+.article-form {
+  padding: 3em 0;
+  position: relative;
+  bottom: 0;
+
+  input,
+  textarea {
+    background: #fff;
+    border: none;
+    @include box-shadow(none);
+    padding: 5px 5px;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 45px;
+    margin-bottom: 0.6em;
+  }
+
+  textarea {
+    height: 300px;
+  }
+
+  .buttons {
+    background: $bg-color;
+    padding: 0.3em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  button {
+    background: $blue;
+
+    &.publish {
+      background: $green;
+    }
+  }
+
+  .cancel-link {
+    color: $red;
+  }
+}

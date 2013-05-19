@@ -8,7 +8,19 @@
 </head>
 <body>
 
-<%= yield %>
+  <div class="container">
+    <% if flash[:success] %>
+      <p class="flash-success"><%= flash[:success] %></p>
+    <% end %>
+    <% if flash[:error] %>
+      <p class="flash-alert"><%= flash[:error] %></p>
+    <% end %>
+    <% if flash[:notice] %>
+      <p class="flash-warning"><%= flash[:notice] %></p>
+    <% end %>
+
+    <%= yield %>
+  </div>
 
 </body>
 </html>
