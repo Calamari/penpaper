@@ -95,4 +95,16 @@ describe Article do
       expect(article.slug).to eql result
     end
   end
+
+  describe "#teaser" do
+    let(:short) { "Here I go" }
+    let(:text) { "and more stuff" }
+    let(:article) { Fabricate.build(:article, :text => "#{short}<!--more-->#{text}") }
+    let(:article_without_more) { Fabricate.build(:article, :text => "#{short}#{text}") }
+
+    it "returns teaser if there is one" do
+      expect(article.teaser).to eql short
+      expect(article_without_more.teaser).to eql short + text
+    end
+  end
 end

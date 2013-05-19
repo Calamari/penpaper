@@ -25,6 +25,10 @@ class Article < ActiveRecord::Base
     !draft?
   end
 
+  def teaser
+    text.split('<!--more-->').first
+  end
+
   private
 
   def generate_html
