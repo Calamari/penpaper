@@ -4,10 +4,10 @@ describe Article do
   describe "empty Article" do
     subject { Article.new }
 
-    it { should_not be_valid(:title) }
-    it { should_not be_valid(:slug) }
-    it { should_not be_valid(:text) }
-    it { should_not be_valid(:html) }
+    it { should have(1).error_on(:title) }
+    it { should have(1).error_on(:slug) }
+    it { should have(1).error_on(:text) }
+    it { should have(0).error_on(:html) }
 
     it { subject.published?.should_not be true }
     it { subject.draft?.should be true }
@@ -53,6 +53,17 @@ describe Article do
 
       it { subject.length.should be 1 }
       it { subject.should include(article2) }
+    end
+  end
+
+  describe "html attribute" do
+    let(:text) { "# Hello\n\n* you fool" }
+    let(:result) { "<h1 id=\"hello\">Hello</h1>\n\n<ul>\n  <li>you fool</li>\n</ul>\n" }
+    let!(:article) { Fabricate.build(:article, :text => text) }
+    it "is created on save" do
+      expect(article.html).to be nil
+      article.save
+      expect(article.html).to eql result
     end
   end
 end
