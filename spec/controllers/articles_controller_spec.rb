@@ -23,7 +23,7 @@ describe ArticlesController do
   # This should return the minimal set of attributes required to create a valid
   # Article. As you add validations to Article, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { title: "My String", :text => "a Text", :html => "<p>a Text</p>", :slug => 'my-string' } }
+  let(:valid_attributes) { Fabricate.attributes_for(:article) }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -41,7 +41,7 @@ describe ArticlesController do
   describe "GET show" do
     it "assigns the requested article as @article" do
       article = Article.create! valid_attributes
-      get :show, {:id => article.to_param}, valid_session
+      get :show, {:slug => article.slug}, valid_session
       assigns(:article).should eq(article)
     end
   end
@@ -77,7 +77,7 @@ describe ArticlesController do
 
       it "redirects to the created article" do
         post :create, {:article => valid_attributes}, valid_session
-        response.should redirect_to(Article.last)
+        response.should redirect_to(article_path(:slug => Article.last.slug))
       end
     end
 
@@ -119,7 +119,7 @@ describe ArticlesController do
       it "redirects to the article" do
         article = Article.create! valid_attributes
         put :update, {:id => article.to_param, :article => valid_attributes}, valid_session
-        response.should redirect_to(article)
+        response.should redirect_to(article_path(:slug => article.slug))
       end
     end
 
