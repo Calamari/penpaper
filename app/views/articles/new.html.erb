@@ -1,2 +1,10 @@
+<%- if @drafts.present? -%>
+  <h3>There are <%= @drafts.count %> Drafts:</h3>
+  <ul>
+    <%- @drafts.each do |draft| -%>
+      <li><%= link_to draft.title, edit_article_path(draft) %></li>
+    <%- end -%>
+  </ul>
+<%- end -%>
 
 <%= render 'form' %>
