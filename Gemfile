@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 gem 'kramdown'
 
+gem 'bcrypt-ruby' # bcrypt for has_secore_password
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
