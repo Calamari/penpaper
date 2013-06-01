@@ -1,0 +1,10 @@
+<h1>Let me in</h1>
+<%= form_tag sessions_path, class: 'login-form' do -%>
+  <p>
+    <%= text_field_tag :email, params[:email], :placeholder => 'E-Mail' %>
+  </p>
+  <p>
+    <%= password_field_tag :password, '', :placeholder => 'Password' %>
+  </p>
+  <button type="submit">Log in</button>
+<%- end -%>

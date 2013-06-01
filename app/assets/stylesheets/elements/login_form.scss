@@ -1,7 +1,7 @@
 @import "compass/css3/box-shadow";
 @import "base/colors";
 
-.article-form {
+.login-form {
   padding: 3em 0;
   position: relative;
   bottom: 0;
@@ -9,10 +9,10 @@
   input,
   textarea {
     background: #fff;
-    border: none;
+    border: 1px solid #ccc;
     @include box-shadow(none);
-    padding: 5px 5px;
-    width: 100%;
+    padding: 10px 15px;
+    width: 90%;
 
     &:focus {
       outline: none;
