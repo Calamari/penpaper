@@ -1,6 +1,8 @@
 <article>
   <h1><%= link_to article.title, show_article_path(:slug => article.slug) %></h1>
 
+  <footer>By <%= article.author.name %></footer>
+
   <%- if defined? teaser-%>
     <%= article.teaser_html.html_safe %>
   <%- else -%>

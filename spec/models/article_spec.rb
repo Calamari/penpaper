@@ -8,6 +8,7 @@ describe Article do
     it { should have(0).error_on(:slug) }
     it { should have(1).error_on(:text) }
     it { should have(0).error_on(:html) }
+    it { should have(1).error_on(:user_id) }
 
     it { subject.published?.should_not be true }
     it { subject.draft?.should be true }
@@ -73,10 +74,15 @@ describe Article do
     end
   end
 
+  describe "#author" do
+    subject { Fabricate(:article) }
+    it { subject.author.should eql User.find(subject.user_id) }
+  end
+
   describe "html attribute" do
     let(:text) { "# Hello\n\n* you fool" }
     let(:result) { "<h1 id=\"hello\">Hello</h1>\n\n<ul>\n  <li>you fool</li>\n</ul>\n" }
-    let!(:article) { Fabricate.build(:article, :text => text) }
+    let!(:article) { Article.new Fabricate.attributes_for(:article, :text => text) }
     it "is created on save" do
       expect(article.html).to be nil
       article.save
@@ -87,7 +93,7 @@ describe Article do
   describe "slug attribute" do
     let(:title) { "I am a cool title" }
     let(:result) { "i-am-a-cool-title" }
-    let!(:article) { Fabricate.build(:article, :title => title) }
+    let!(:article) { Article.new Fabricate.attributes_for(:article, :title => title) }
 
     it "is created on save" do
       expect(article.slug).to be nil
@@ -99,8 +105,8 @@ describe Article do
   describe "#teaser" do
     let(:short) { "Here I go" }
     let(:text) { "and more stuff" }
-    let(:article) { Fabricate.build(:article, :text => "#{short}<!--more-->#{text}") }
-    let(:article_without_more) { Fabricate.build(:article, :text => "#{short}#{text}") }
+    let(:article) { Article.new Fabricate.attributes_for(:article, :text => "#{short}<!--more-->#{text}") }
+    let(:article_without_more) { Article.new Fabricate.attributes_for(:article, :text => "#{short}#{text}") }
 
     it "returns teaser if there is one" do
       expect(article.teaser).to eql short
@@ -111,8 +117,8 @@ describe Article do
   describe "teaser_html attribute" do
     let(:short) { "Here I go" }
     let(:text) { "and more stuff" }
-    let(:article) { Fabricate.build(:article, :text => "#{short}<!--more-->#{text}") }
-    let(:article_without_more) { Fabricate.build(:article, :text => "#{short} #{text}") }
+    let(:article) { Article.new Fabricate.attributes_for(:article, :text => "#{short}<!--more-->#{text}") }
+    let(:article_without_more) { Article.new Fabricate.attributes_for(:article, :text => "#{short} #{text}") }
 
     it "is created on save" do
       expect(article.teaser_html).to be nil

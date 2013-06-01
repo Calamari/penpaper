@@ -5,6 +5,12 @@ article {
   margin-bottom: 3em;
   padding-top: 3em;
 
+  footer {
+    color: $grey;
+    font-size: 0.9em;
+    margin-bottom: 1.4em;
+  }
+
   ul {
     list-style-type: square;
     padding-left: 1.5em;

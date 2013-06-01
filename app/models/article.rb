@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
-  attr_accessible :html, :published_at, :slug, :text, :title
+  attr_accessible :html, :published_at, :slug, :text, :title, :user_id
 
-  validates_presence_of :text, :title
+  validates_presence_of :text, :title, :user_id
 
   scope :draft, lambda { where(:published_at => nil) }
   scope :published, lambda { where('published_at IS NOT NULL') }
@@ -9,6 +9,10 @@ class Article < ActiveRecord::Base
   before_save :generate_html
   before_save :generate_slug
   before_save :generate_teaser_html
+
+  def author
+    @author ||= User.find(user_id)
+  end
 
   def publish
     self.published_at = Time.now
