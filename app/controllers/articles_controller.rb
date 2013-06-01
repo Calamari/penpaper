@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+
+  before_filter :redirect_if_logged_out, :except => [:index, :show]
+
   # GET /articles
   # GET /articles.json
   def index

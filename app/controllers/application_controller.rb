@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
   def render_404
     render :text => '404', :status => :not_found
   end
+
+  def redirect_if_logged_out
+    unless current_user
+      flash[:alert] = "Don't do that."
+      redirect_to root_path
+    end
+  end
 end
