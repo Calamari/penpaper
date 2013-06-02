@@ -1,7 +1,10 @@
-<article>
-  <h1><%= link_to article.title, show_article_path(:slug => article.slug) %></h1>
+<article itemscope itemtype="http://schema.org/Article">
+  <h1 itemprop="name"><%= link_to article.title, show_article_path(:slug => article.slug) %></h1>
 
-  <footer>By <%= link_to article.author.name, article.author.homepage %></footer>
+  <footer>
+    <time datetime="<%= article.created_at.to_datetime.to_s %>" itemprop="dateCreated"><%= article.published_at.strftime('%d.%m.%Y - %H:%m') %></time>
+    <%= link_to article.author.name, article.author.homepage %>
+  </footer>
 
   <%- if defined? teaser-%>
     <%= article.teaser_html.html_safe %>

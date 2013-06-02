@@ -9,6 +9,11 @@ article {
     color: $grey;
     font-size: 0.9em;
     margin-bottom: 1.4em;
+
+    a {
+      color: $grey;
+      float: right;
+    }
   }
 
   ul {
