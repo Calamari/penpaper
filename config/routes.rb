@@ -1,8 +1,7 @@
 Penpaper::Application.routes.draw do
   root :to => 'articles#index'
-  resources :articles, :except => :show
+  resources :articles
   resources :sessions, :only => [:new, :create, :destroy]
-  get '/:slug' => 'articles#show', :as => 'show_article'
 
 
   # The priority is based upon order of creation:

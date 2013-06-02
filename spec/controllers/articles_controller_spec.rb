@@ -18,12 +18,12 @@ describe ArticlesController do
 
   describe "GET show" do
     it "assigns the requested article as @article" do
-      get :show, {:slug => article.slug}
+      get :show, { :id => article }
       assigns(:article).should eq(article)
     end
 
     it "shows 404 if aritlce is draft" do
-      get :show, {:slug => draft.slug}
+      get :show, { :id => draft }
       expect(response.status).to be 404
     end
   end
@@ -119,7 +119,7 @@ describe ArticlesController do
           end
 
           it "redirects to the created article" do
-            response.should redirect_to(show_article_path(:slug => Article.last.slug))
+            response.should redirect_to(article_path(Article.last))
           end
         end
 
@@ -176,15 +176,11 @@ describe ArticlesController do
 
         describe "with published flag" do
           before do
-            put :update, {:id => draft.to_param, :article => valid_attributes, :publish => ''}
+            put :update, {:id => draft.to_param, :article => { "title" => "New Title" }, :publish => ''}
           end
 
           it "makes it published" do
             assigns(:article).should be_published
-          end
-
-          it "redirects to the article" do
-            response.should redirect_to(show_article_path(:slug => article.slug))
           end
         end
 

@@ -2,12 +2,11 @@ require 'spec_helper'
 
 describe "articles/show" do
   before(:each) do
-    @article = assign(:article, stub_model(Article,
+    @article = assign(:article, Fabricate(:article,
       :title => "Title",
       :text => "MyText",
-      :html => "MyText",
-      :slug => "Slug"
-    ))
+      :html => "MyText"
+    ).tap {|a| a.publish })
   end
 
   it "renders attributes in <p>" do
@@ -16,6 +15,5 @@ describe "articles/show" do
     rendered.should match(/Title/)
     rendered.should match(/MyText/)
     rendered.should match(/MyText/)
-    rendered.should match(/Slug/)
   end
 end

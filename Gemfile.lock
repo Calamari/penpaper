@@ -66,6 +66,7 @@ GEM
       multi_json (~> 1.0)
     fabrication (2.7.0)
     ffi (1.8.1)
+    friendly_id (4.0.9)
     fssm (0.2.10)
     hike (1.2.2)
     i18n (0.6.1)
@@ -170,6 +171,7 @@ DEPENDENCIES
   compass-rails
   debugger
   fabrication
+  friendly_id
   jasmine
   kramdown
   rails (= 3.2.13)

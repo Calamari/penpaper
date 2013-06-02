@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem 'kramdown'
 
 gem 'bcrypt-ruby' # bcrypt for has_secore_password
+gem 'friendly_id' # provide friednly urls
 
 # Gems used only for assets and not required
 # in production environments by default.

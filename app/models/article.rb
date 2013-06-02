@@ -1,4 +1,7 @@
 class Article < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   attr_accessible :html, :published_at, :slug, :text, :title, :user_id
 
   validates_presence_of :text, :title, :user_id
@@ -7,7 +10,6 @@ class Article < ActiveRecord::Base
   scope :published, lambda { where('published_at IS NOT NULL') }
 
   before_save :generate_html
-  before_save :generate_slug
   before_save :generate_teaser_html
 
   def author
@@ -50,7 +52,8 @@ class Article < ActiveRecord::Base
     self.teaser_html = parse_markdown(teaser)
   end
 
-  def generate_slug
-    self.slug = title.parameterize
+
+  def should_generate_new_friendly_id?
+    new_record?
   end
 end

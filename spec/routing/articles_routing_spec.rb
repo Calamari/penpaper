@@ -12,7 +12,7 @@ describe ArticlesController do
     end
 
     it "routes to #show" do
-      get("/my-slug").should route_to("articles#show", :slug => "my-slug")
+      get("/articles/my-slug").should route_to("articles#show", :id => "my-slug")
     end
 
     it "routes to #edit" do

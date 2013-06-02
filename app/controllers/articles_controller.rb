@@ -16,7 +16,11 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @article = Article.published.find_by_slug!(params[:slug])
+    @article = Article.published.find(params[:id])
+
+    if request.path != article_path(@article)
+      redirect_to @article, status: :moved_permanently
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -52,7 +56,7 @@ class ArticlesController < ApplicationController
       if @article.save
         if @article.published?
           flash[:success] = 'Article was successfully published.'
-          format.html { redirect_to show_article_path(:slug => @article.slug) }
+          format.html { redirect_to article_path(@article) }
         else
           flash[:success] = 'Article was successfully saved.'
           format.html { redirect_to edit_article_path(@article) }
@@ -79,7 +83,7 @@ class ArticlesController < ApplicationController
           else
             flash[:success] = 'Article was successfully published.'
           end
-          format.html { redirect_to show_article_path(:slug => @article.slug) }
+          format.html { redirect_to article_path(@article) }
         else
           if was_published
             flash[:success] = 'Article was successfully saved and unpublished.'
