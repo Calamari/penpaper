@@ -1,5 +1,3 @@
-<h1>All articles</h1>
-
 <% @articles.each do |article| %>
-<%= render 'show', :article => article, :teaser => true %>
+  <%= render 'show', :article => article, :teaser => true %>
 <% end %>
