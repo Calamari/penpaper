@@ -3,9 +3,18 @@
 
 <%- content_for :secondary do -%>
   <div class="article-info">
-    Test
+    <ul>
+      <%- @article.tags.each do |tag| %>
+        <li><%= tag.name %></li>
+      <%- end -%>
+    </ul>
 
-    <%= form_for Tag.new do |f| %>
+    <%- if current_user -%>
+      <%= form_for Tag.new do |f| %>
+        <%= hidden_field_tag :article_id, @article.id -%>
+        <%= f.text_field :name, placeholder: 'tag name' -%>
+
+      <%- end -%>
     <%- end -%>
   </div>
 <%- end -%>
