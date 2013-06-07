@@ -21,16 +21,19 @@
     <%= yield %>
     <div class="secondary">
       <p class="me-description">The minimal blog by <strong>Georg Tavonius</strong>, Webdeveloper, hobby photographer and human.</p>
-      <ul class="menu">
-        <%- if current_user -%>
-          <li><%= link_to 'Write a post', new_article_path %></li>
-          <li><%= link_to 'Logout', session_path(:id => current_user.id), :method => 'delete' %></li>
-        <%- else -%>
-          <li><%= link_to 'Login', new_session_path %></li>
-        <%- end -%>
-      </ul>
     </div>
   </div>
+
+  <footer>
+    <ul class="footer-menu">
+      <%- if current_user -%>
+        <li><%= link_to 'Write a post', new_article_path %></li>
+        <li><%= link_to 'Logout', session_path(:id => current_user.id), :method => 'delete' %></li>
+      <%- else -%>
+        <li><%= link_to 'Login', new_session_path %></li>
+      <%- end -%>
+    </ul>
+  </footer>
 
   <%= javascript_include_tag "application" %>
 </body>

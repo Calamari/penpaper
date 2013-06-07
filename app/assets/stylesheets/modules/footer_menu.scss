@@ -1,0 +1,14 @@
+@import "base/colors";
+
+.footer-menu {
+
+  li {
+    display: inline;
+    font-size: 0.8em;
+    margin: 0 1em;
+  }
+
+  a {
+    color: $grey;
+  }
+}
