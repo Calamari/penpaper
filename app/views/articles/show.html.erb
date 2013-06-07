@@ -1,2 +1,11 @@
 
 <%= render 'show', :article => @article %>
+
+<%- content_for :secondary do -%>
+  <div class="article-info">
+    Test
+
+    <%= form_for Tag.new do |f| %>
+    <%- end -%>
+  </div>
+<%- end -%>

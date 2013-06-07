@@ -2,6 +2,7 @@ Penpaper::Application.routes.draw do
   root :to => 'articles#index'
   resources :articles
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :tags
 
 
   # The priority is based upon order of creation:
