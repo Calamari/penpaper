@@ -130,4 +130,14 @@ describe Article do
       expect(article_without_more.teaser_html).to eql "<p>#{short} #{text}</p>\n"
     end
   end
+
+  describe "having a tag" do
+    let(:article) { Fabricate(:article) }
+    let(:tag1) { Fabricate(:tag) }
+
+    it "can be assigned to a article" do
+      article.tags << tag1
+      expect(article.tags.length).to eql 1
+    end
+  end
 end

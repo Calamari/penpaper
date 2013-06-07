@@ -4,6 +4,8 @@ class Article < ActiveRecord::Base
 
   attr_accessible :html, :published_at, :slug, :text, :title, :user_id
 
+  has_and_belongs_to_many :tags
+
   validates_presence_of :text, :title, :user_id
 
   scope :draft, lambda { where(:published_at => nil) }
