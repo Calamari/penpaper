@@ -27,17 +27,3 @@ article {
   }
 }
 
-.CodeRay {
-  font-size: 0.8em;
-  line-height: 1.4em;
-  .line-numbers {
-    border-right: 1px solid $grey;
-    padding-right: 0.5em;
-    text-align: right;
-  }
-
-  .code {
-    padding-left: 0.5em;
-  }
-}
-
