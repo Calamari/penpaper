@@ -16,16 +16,16 @@
 
 <%- content_for :secondary do -%>
   <div class="article-info">
-    <ul>
+    <ul class="tags">
       <%- @article.tags.each do |tag| %>
         <li><%= tag.name %></li>
       <%- end -%>
     </ul>
 
     <%- if current_user -%>
-      <%= form_for Tag.new do |f| %>
+      <%= form_for Tag.new, html: { class: 'tag-form' } do |f| %>
         <%= hidden_field_tag :article_id, @article.id -%>
-        <%= f.text_field :name, placeholder: 'tag name' -%>
+        <%= f.text_field :name, placeholder: '+ add new tag' -%>
 
       <%- end -%>
     <%- end -%>

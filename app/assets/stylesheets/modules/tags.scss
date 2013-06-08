@@ -1,0 +1,51 @@
+@import "compass/css3/box-shadow";
+@import "base/colors";
+
+.tags,
+.tag-form {
+  margin-left: -32px;
+  padding-left: 22px;
+  overflow: hidden;
+
+  & > li,
+  & > input {
+    border: 3px solid $grey;
+    border-left-width: 6px;
+    @include border-radius(0 4px 4px 0);
+    @include box-shadow(inset 1px 1px 2px transparentize($black, 0.6), 2px 2px 2px transparentize($black, 0.8));
+    display: inline-block;
+    float: left;
+    clear: left;
+    font-size: 15px;
+    line-height: 26px;
+    height: 30px;
+    padding: 0px 6px;
+    margin-bottom: 8px;
+    position: relative;
+
+    &:before {
+      content: "";
+      @include triangle-left($grey, 15px);
+      position: absolute;
+      left: -30px;
+      top: -3px;
+    }
+
+    // Hole
+    &:after {
+      color: $white;
+      content: "•";
+      font-size: 17px;
+      position: absolute;
+      left: -13px;
+      line-height: 24px;
+      text-shadow: -1px -1px 0 transparentize($black, 0.6);
+    }
+
+  }
+}
+
+.tag-form {
+  margin-top: -1.5em;
+  margin-bottom: 1.5em;
+}

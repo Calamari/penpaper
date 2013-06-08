@@ -1,0 +1,40 @@
+// border-triangles helper
+// Paints a triangle from borders
+//
+// @param $color:         the border color
+// @param $edge-length    length of the sides
+// @param $ratio          ratio base length to sides length
+
+
+
+@mixin zero-block {
+  @include inline-block;
+  width: 0;
+  height: 0;
+}
+
+@mixin triangle-down($color: #777, $edge_length: 5px, $ratio: 1.2) {
+  @include zero-block;
+  border-top: $edge_length*$ratio solid $color;
+  border-left: $edge_length solid transparent;
+  border-right: $edge_length solid transparent;
+}
+
+@mixin triangle-up($color: #777, $edge_length: 5px, $ratio: 1.2) {
+  @include zero-block;
+  border-bottom: $edge_length*$ratio solid $color;
+  border-left: $edge_length solid transparent;
+  border-right: $edge_length solid transparent;
+}
+
+@mixin triangle-left($color: #777, $edge_length: 5px, $ratio: 1.6) {
+  border-right: $edge_length*$ratio solid $color;
+  border-top: $edge_length solid transparent;
+  border-bottom: $edge_length solid transparent;
+}
+
+@mixin triangle-right($color: #777, $edge_length: 5px, $ratio: 2) {
+  border-left: $edge_length*$ratio solid $color;
+  border-top: $edge_length solid transparent;
+  border-bottom: $edge_length solid transparent;
+}
