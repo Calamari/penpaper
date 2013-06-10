@@ -6,6 +6,10 @@
     display: inline;
     font-size: 0.8em;
     margin: 0 1em;
+
+    &.spacer {
+      color: $light-grey;
+    }
   }
 
   a {

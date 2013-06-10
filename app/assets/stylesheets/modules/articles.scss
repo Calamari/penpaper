@@ -5,10 +5,15 @@ article {
   margin-bottom: 3em;
   padding-top: 3em;
 
+  h1 {
+    @extend .main-header;
+    margin-bottom: 0.08em;
+  }
+
   footer {
     color: $grey;
     font-size: 0.9em;
-    margin-bottom: 1.4em;
+    margin-bottom: 1.8em;
 
     a {
       color: $grey;
