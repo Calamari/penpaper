@@ -2,7 +2,7 @@
   <h1 itemprop="headline"><%= link_to article.title, article_path(article) %></h1>
 
   <footer>
-    <time datetime="<%= article.created_at.to_datetime.to_s %>" itemprop="datePublished"><%= article.published_at.strftime('%d.%m.%Y - %H:%m') %></time>
+    <time datetime="<%= article.created_at.to_datetime.to_s %>" itemprop="datePublished"><%= article.published_at.strftime('%d.%m.%Y - %H:%M') %></time>
     <%- if article.author.homepage.present? -%>
       <%= link_to article.author.name, article.author.homepage, itemprop: 'author' %>
     <%- else -%>
