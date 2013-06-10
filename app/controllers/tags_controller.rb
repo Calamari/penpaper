@@ -1,5 +1,10 @@
 class TagsController < ApplicationController
-  before_filter :redirect_if_logged_out
+  before_filter :redirect_if_logged_out, :except => :show
+
+  def show
+    @tag = Tag.find(params[:id])
+    @articles = @tag.articles.all
+  end
 
   def create
     article = Article.find(params[:article_id])

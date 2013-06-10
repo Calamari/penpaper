@@ -1,0 +1,9 @@
+.title-list {
+  > li {
+    clear: both;
+    > time {
+      color: $grey;
+      float: right;
+    }
+  }
+}

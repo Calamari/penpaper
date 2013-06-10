@@ -10,7 +10,7 @@ describe "articles/show" do
   end
 
   it "renders attributes in <p>" do
-    render
+    render 'articles/show', article: @article, current_user: nil
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Title/)
     rendered.should match(/MyText/)

@@ -7,8 +7,8 @@
   padding-left: 22px;
   overflow: hidden;
 
-  & > li,
-  & > input {
+   > li,
+   > input {
     border: 3px solid $grey;
     border-left-width: 6px;
     @include border-radius(0 4px 4px 0);
@@ -19,9 +19,13 @@
     font-size: 15px;
     line-height: 26px;
     height: 30px;
-    padding: 0px 6px;
     margin-bottom: 8px;
     position: relative;
+
+    > a {
+      padding: 0px 6px;
+      text-decoration: none;
+    }
 
     &:before {
       content: "";
@@ -48,4 +52,7 @@
 .tag-form {
   margin-top: -1.5em;
   margin-bottom: 1.5em;
+  input {
+    padding: 0px 6px;
+  }
 }
