@@ -23,6 +23,9 @@
     position: relative;
 
     > a {
+      color: $black;
+      font-size: 0.9em;
+      font-weight: 600;
       padding: 0px 6px;
       text-decoration: none;
     }

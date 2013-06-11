@@ -77,6 +77,7 @@ h1 {
   margin-bottom: 0.6em;
 
   a {
+    color: $black;
     text-decoration: none;
   }
 }
@@ -94,5 +95,5 @@ ol {
 }
 
 a {
-  color: $black;
+  color: $link;
 }
