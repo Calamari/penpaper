@@ -1,11 +1,16 @@
 .CodeRay {
+  border-top: 1px solid $grey;
+  border-left: 1px solid $grey;
+  @include box-shadow(2px 2px $white, 5px 5px $light-grey);
   font-size: 0.8em;
   margin-bottom: 1.6em;
+  width: 100%;
 
   .line-numbers {
     border-right: 1px solid $grey;
     padding-right: 0.5em;
     text-align: right;
+    width: 2.5em;
   }
 
   .code {

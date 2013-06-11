@@ -42,7 +42,8 @@ class Article < ActiveRecord::Base
 
   def parse_markdown(text)
     Kramdown::Document.new(text, {
-      coderay_line_numbers: :table
+      coderay_line_numbers: :table,
+      coderay_wrap: nil
     }).to_html
   end
 
