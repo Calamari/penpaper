@@ -1,5 +1,11 @@
+@import "base/media_queries";
 @import "base/colors";
 @import "base/fonts";
+
+@mixin transition($definition) {
+          transition: $definition;
+  -webkit-transition: $definition; /* Safari */
+}
 
 * {
   box-sizing: border-box;
@@ -23,6 +29,11 @@ body, html {
   width: 900px;
   padding-right: 310px;
   padding-bottom: 2em;
+  @include transition(all 0.5s);
+  @media screen and (max-width: $break-medium) {
+    width: 100%;
+    padding: 0 1em 1em;
+  }
 }
 
 .secondary {
@@ -34,6 +45,15 @@ body, html {
   right: 0;
   width: 300px;
   text-align: left;
+  @media screen and (max-width: $break-medium) {
+    margin-top: -5em; //damn this is a hack, but why is that needed?
+    padding: 0 0 0 2em;
+    position: relative;
+    top: inherit;
+    right: inherit;
+    left: inherit;
+    width: 100%;
+  }
 }
 
 .main {
