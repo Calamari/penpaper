@@ -1,0 +1,8 @@
+<ul class="title-list">
+  <% articles.each do |article| %>
+    <li>
+      <time datetime="<%= article.created_at.to_datetime.to_s %>" itemprop="datePublished"><%= article.published_at.strftime('%d.%m.%Y') %></time>
+      <%= link_to article.title, article_path(article) %>
+    </li>
+  <% end %>
+</ul>

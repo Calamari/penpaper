@@ -1,16 +1,27 @@
 class ArticlesController < ApplicationController
 
-  before_filter :redirect_if_logged_out, :except => [:index, :show]
+  before_filter :redirect_if_logged_out, :except => [:index, :show, :list]
 
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.published.all
+    limit = 3
+    @articles = Article.published.order('published_at DESC').limit(limit+1).all
+
+    if @articles.size == limit+1
+      @articles.pop
+      @show_more_link = true
+    end
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articles }
     end
+  end
+
+  # GET /list
+  def list
+    @articles = Article.published.order('published_at DESC').all
   end
 
   # GET /articles/1

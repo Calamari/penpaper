@@ -1,3 +1,6 @@
 <% @articles.each do |article| %>
   <%= render 'show', :article => article, :teaser => true %>
 <% end %>
+<%- if @show_more_link -%>
+  <p class="more"><%= link_to 'Show more articles', list_articles_path %></p>
+<%- end -%>

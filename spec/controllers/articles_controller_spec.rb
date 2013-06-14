@@ -5,21 +5,33 @@ describe ArticlesController do
   let(:valid_attributes) { Fabricate.attributes_for(:article) }
   let(:valid_session) { {} }
 
-  let(:article) { Fabricate(:published_article) }
+  let(:article) { Fabricate(:published_article, published_at: 3.minutes.ago) }
   let(:draft) { Fabricate(:article) }
 
   describe "GET index" do
-    it "assigns all articles as @articles" do
+    let!(:article2) { Fabricate(:published_article, published_at: 2.minutes.ago) }
+    let!(:article3) { Fabricate(:published_article, published_at: 1.minutes.ago) }
+    let!(:article4) { Fabricate(:published_article, published_at: 0.minutes.ago) }
+    it "assigns three articles as @articles" do
       article
       get :index, {}
-      assigns(:articles).should eq([article])
+      expect(assigns(:articles).length).to eql 3
+      assigns(:articles).should eql([article4, article3, article2])
+    end
+  end
+
+  describe "GET list" do
+    it "assigns all articles as @articles" do
+      article
+      get :list, {}
+      assigns(:articles).should eql([article])
     end
   end
 
   describe "GET show" do
     it "assigns the requested article as @article" do
       get :show, { :id => article }
-      assigns(:article).should eq(article)
+      assigns(:article).should eql(article)
     end
 
     it "shows 404 if aritlce is draft" do
@@ -237,7 +249,7 @@ describe ArticlesController do
         }.to change(Article, :count).by(-1)
       end
 
-      it "redirects to the articles list" do
+      it "redirects to the articles index" do
         article = Article.create! valid_attributes
         delete :destroy, {:id => article.to_param}
         response.should redirect_to(articles_url)
