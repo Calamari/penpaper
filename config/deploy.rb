@@ -4,12 +4,15 @@ set :repository,  "./"
 # Allow entering sudo passwords if needed
 # default_run_options[:pty] = true
 
+require "bundler/capistrano"
+
 require 'rvm/capistrano'
 set :rvm_ruby_string, 'ruby-2.0.0-p0@penpaper'
+set :rvm_type, :user
 before 'deploy:setup', 'rvm:create_gemset'
 
 set :local_repository,  "/Users/georg.tavonius/Dropbox/coding/penpaper/.git"
-set :repository, "git@github.com:Calamari/penpaper.git"
+set :repository, "https://github.com/Calamari/penpaper.git"
 
 set :ssh_options, {:forward_agent => true}
 set :user, 'calamari'
@@ -25,8 +28,6 @@ server '85.214.144.70', :app, :web, :db, :primary => true
 # role :app, "your app-server here"                          # This may be the same as your `Web` server
 # role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
 # role :db,  "your slave db-server here"
-
-set :user, 'calamari'
 
 set :deploy_to, "/var/www/#{application}"
 #set :deploy_via, :export
