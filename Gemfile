@@ -5,8 +5,6 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 gem 'kramdown'
 
 gem 'bcrypt-ruby' # bcrypt for has_secore_password
@@ -30,7 +28,12 @@ group :test do
   gem 'capybara'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 group :development, :test do
+  gem 'sqlite3'
   gem 'rspec-rails' # needs to be in development for the dev env to pick up the rspec rake tasks
   gem 'jasmine'
 
