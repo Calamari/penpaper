@@ -46,3 +46,10 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+after 'deploy:setup' do
+  deploy.setup_directories
+end
+
+after "deploy:update_code", "deploy:migrate"
+after "deploy:update_code", "deploy:assets:precompile"

@@ -1,6 +1,6 @@
-@import "base/media_queries";
-@import "base/colors";
-@import "base/fonts";
+@import "_media_queries";
+@import "_colors";
+@import "_fonts";
 
 @mixin transition($definition) {
           transition: $definition;
