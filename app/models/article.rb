@@ -38,6 +38,15 @@ class Article < ActiveRecord::Base
     text.split('<!--more-->').first
   end
 
+  def open_graph
+    open_graph = OpenGraph.new type: 'article', title: title, url: Rails.application.routes.url_helpers.article_url(self)
+    open_graph.add 'article:author:first_name', 'Georg'
+    open_graph.add 'article:author:last_name', 'Tavonius'
+    open_graph.add 'article:tag', tags.map(&:name)
+    open_graph.add 'article:published_time', published_at.iso8601
+    open_graph
+  end
+
   private
 
   def parse_markdown(text)

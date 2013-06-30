@@ -4,6 +4,7 @@
   <title>Penpaper</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
+  <%= @open_graph.render if @open_graph.present? %>
 </head>
 <body>
   <div class="container">

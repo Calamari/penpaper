@@ -29,6 +29,8 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.published.find(params[:id])
 
+    @open_graph = @article.open_graph
+
     if request.path != article_path(@article)
       redirect_to @article, status: :moved_permanently
     end
