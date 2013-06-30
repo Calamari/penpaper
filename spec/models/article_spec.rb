@@ -140,4 +140,13 @@ describe Article do
       expect(article.tags.length).to eql 1
     end
   end
+
+  describe :open_graph do
+    let(:article) { Fabricate(:article).tap {|a| a.publish} }
+    subject { article.open_graph.render }
+
+    it { should include(article.title) }
+    it { should include(article.published_at.iso8601) }
+    it { should include('article') }
+  end
 end
