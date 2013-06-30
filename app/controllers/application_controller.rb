@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from 'ActiveRecord::RecordNotFound', :with => :render_404 unless Rails.env.development?
 
+  before_filter :set_default_open_graph
+
   private
 
   def current_user
@@ -19,5 +21,9 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "Don't do that."
       redirect_to root_path
     end
+  end
+
+  def set_default_open_graph
+    @open_graph = OpenGraph.new type: 'website', title: 'Jaz-Lounge Blog - by Georg Tavonius', url: Rails.application.routes.url_helpers.root_url
   end
 end
