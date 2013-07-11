@@ -9,16 +9,15 @@
 
    > li,
    > input {
-    border: 3px solid $grey;
+    border: 1px solid $grey;
     border-left-width: 6px;
-    @include border-radius(0 4px 4px 0);
-    @include box-shadow(inset 1px 1px 2px transparentize($black, 0.6), 2px 2px 2px transparentize($black, 0.8));
+    @include border-radius(4px);
     display: inline-block;
     float: left;
     clear: left;
     font-size: 15px;
-    line-height: 26px;
-    height: 30px;
+    line-height: 24px;
+    height: 28px;
     margin-bottom: 8px;
     position: relative;
 
@@ -29,26 +28,15 @@
       padding: 0px 6px;
       text-decoration: none;
     }
+  }
 
-    &:before {
-      content: "";
-      @include triangle-left($grey, 15px);
-      position: absolute;
-      left: -30px;
-      top: -3px;
-    }
+  li:hover {
+    background-color: $grey;
+    cursor: pointer;
 
-    // Hole
-    &:after {
+    > a {
       color: $white;
-      content: "•";
-      font-size: 17px;
-      position: absolute;
-      left: -13px;
-      line-height: 24px;
-      text-shadow: -1px -1px 0 transparentize($black, 0.6);
     }
-
   }
 }
 
