@@ -1,7 +1,7 @@
 Penpaper::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
-  Rails.application.routes.default_url_options[:host]= 'blog.jaz-lounge.com'
+  Rails.application.routes.default_url_options[:host] = 'blog.jaz-lounge.com'
 
   # Code is not reloaded between requests
   config.cache_classes = true
