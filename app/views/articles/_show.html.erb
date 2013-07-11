@@ -14,6 +14,7 @@
   <div itemprop="articleBody">
     <%- if defined? teaser-%>
       <%= article.teaser_html.html_safe %>
+      <%= link_to 'Read more', article_path(article) if article.teaser_html != article.html %>
     <%- else -%>
       <%= article.html.html_safe %>
     <%- end -%>
