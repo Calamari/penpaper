@@ -1,4 +1,14 @@
+@font-face {
+  font-family: 'Lato';
+  src:font-url('Lato-Reg-webfont.eot');
+  src:font-url('Lato-Reg-webfont.eot?#iefix') format('embedded-opentype'),
+    font-url('Lato-Reg-webfont.woff') format('woff'),
+    font-url('Lato-Reg-webfont.ttf') format('truetype'),
+    font-url('Lato-Reg-webfont.svg#Lato-Reg-webfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
-$header-font: "Futura T W01 Demi","Helvetica Neue",Helvetica,Arial,sans-serif;
+$header-font: "Lato", "Futura T W01 Demi","Helvetica Neue",Helvetica,Arial,sans-serif;
 $subheader-font: "ff-meta-serif-web-pro","Meta Serif Pro", Georgia, Times, Cambria, Serif;
 $body-font: "Open Sans", Helvetica, Verdana, Arial, Sans-Serif;
