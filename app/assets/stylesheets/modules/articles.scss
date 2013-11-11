@@ -18,7 +18,7 @@ article {
       position: absolute;
       bottom: 0.5em;
       color: #fff;
-      right: 0.5em;
+      left: 0.5em;
       text-shadow: 0 0 6px #000;
     }
   }
@@ -28,9 +28,14 @@ article {
     font-size: 0.9em;
     margin-bottom: 1.8em;
 
+    time {
+      &:after {
+        content: ' – ';
+      }
+    }
+
     a {
       color: $grey;
-      float: right;
     }
   }
 
@@ -45,3 +50,6 @@ article {
   }
 }
 
+.article-info {
+  font-size: 0.8em;
+}

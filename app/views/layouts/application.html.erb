@@ -19,23 +19,26 @@
     <% end %>
 
     <%= yield %>
-    <div class="secondary">
-      <%= yield :secondary %>
-    </div>
   </div>
 
   <footer class="page-footer">
-    <ul class="footer-menu">
-      <li><%= link_to 'Startpage', root_path %></li>
-      <li><%= link_to 'Archive', list_articles_path %></li>
-      <li class="spacer">•</li>
-      <%- if current_user -%>
-        <li><%= link_to 'Write a post', new_article_path %></li>
-        <li><%= link_to 'Logout', session_path(:id => current_user.id), :method => 'delete' %></li>
-      <%- else -%>
-        <li><%= link_to 'Login', new_session_path %></li>
-      <%- end -%>
-    </ul>
+    <div class="container">
+      aefkorpkioko
+      <ul class="footer-menu">
+        <li><strong>Blog</strong></li>
+        <li><%= link_to 'Startpage', root_path %></li>
+        <li><%= link_to 'Archive', list_articles_path %></li>
+      </ul>
+      <ul class="footer-menu">
+        <li><strong>User</strong></li>
+        <%- if current_user -%>
+          <li><%= link_to 'Write a post', new_article_path %></li>
+          <li><%= link_to 'Logout', session_path(:id => current_user.id), :method => 'delete' %></li>
+        <%- else -%>
+          <li><%= link_to 'Login', new_session_path %></li>
+        <%- end -%>
+      </ul>
+    </div>
   </footer>
 
   <%= javascript_include_tag "application" %>

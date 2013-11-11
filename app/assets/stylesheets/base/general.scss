@@ -17,7 +17,7 @@ body, html {
   color: $black;
   font-family: $body-font;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 200;
   line-height: 1.6em; // 28,8 px
 }
@@ -26,8 +26,7 @@ body, html {
   margin: 0 auto;
   position: relative;
   text-align: left;
-  width: 900px;
-  padding-right: 310px;
+  width: 40em;
   padding-bottom: 2em;
   @include transition(all 0.5s);
   @media screen and (max-width: $break-medium) {
@@ -37,17 +36,12 @@ body, html {
 }
 
 .secondary {
+  font-size: 0.8em;
   margin: 0 auto;
   padding: 3em 0 0 1em;
-  min-height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 300px;
   text-align: left;
   @media screen and (max-width: $break-medium) {
     margin-top: -5em; //damn this is a hack, but why is that needed?
-    padding: 0 0 0 2em;
     position: relative;
     top: inherit;
     right: inherit;
@@ -65,7 +59,6 @@ body, html {
 .main-header {
   -webkit-font-smoothing: antialiased;
   font-family: $header-font;
-  text-align: right;
   font-size: 45px;
   margin-bottom: 32px;
   line-height: 1em;
@@ -74,10 +67,13 @@ body, html {
 }
 
 .page-footer {
-  padding: 1em 0 2em;
-  background: darken($bg-color, 0.6);
   border-top: 1px solid $grey;
   margin-top: 1px;
+
+  .container {
+    padding: 1em 0 2em;
+    text-align: right;
+  }
 }
 
 /*= Page elements
@@ -99,6 +95,11 @@ h1 {
     color: $black;
     text-decoration: none;
   }
+}
+
+h2 {
+  font-size: 1.4em;
+  font-weight: 400;
 }
 
 p {

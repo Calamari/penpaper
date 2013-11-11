@@ -22,4 +22,25 @@
       <%= article.html.html_safe %>
     <%- end -%>
   </div>
+
+  <%- unless defined? teaser-%>
+    <div class="article-info">
+      <%- if article.tags.present? -%>
+        <strong>Tags:</strong>
+        <ul class="tags">
+          <%- article.tags.each do |tag| %>
+            <li><%= link_to tag.name, tag_path(tag) %></li>
+          <%- end -%>
+        </ul>
+      <%- end -%>
+
+      <%- if current_user -%>
+        <%= form_for Tag.new, html: { class: 'tag-form' } do |f| %>
+          <%= hidden_field_tag :article_id, article.id -%>
+          <%= f.text_field :name, placeholder: '+ add new tag' -%>
+
+        <%- end -%>
+      <%- end -%>
+    </div>
+  <%- end -%>
 </article>

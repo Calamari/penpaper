@@ -1,18 +1,24 @@
 @import "base/colors";
 
 .footer-menu {
+  margin-bottom: 0;
 
   li {
     display: inline;
-    font-size: 0.8em;
+    font-size: 0.75em;
     margin: 0 1em;
 
-    &.spacer {
-      color: $light-grey;
+    &:first-child {
+      float: right;
     }
   }
 
   a {
     color: $grey;
+    text-decoration: none;
+
+    &:hover {
+      color: $black;
+    }
   }
 }

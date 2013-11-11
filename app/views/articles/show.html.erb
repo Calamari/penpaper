@@ -13,21 +13,3 @@
   })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-<%- content_for :secondary do -%>
-  <div class="article-info">
-    <ul class="tags">
-      <%- @article.tags.each do |tag| %>
-        <li><%= link_to tag.name, tag_path(tag) %></li>
-      <%- end -%>
-    </ul>
-
-    <%- if current_user -%>
-      <%= form_for Tag.new, html: { class: 'tag-form' } do |f| %>
-        <%= hidden_field_tag :article_id, @article.id -%>
-        <%= f.text_field :name, placeholder: '+ add new tag' -%>
-
-      <%- end -%>
-    <%- end -%>
-  </div>
-<%- end -%>
