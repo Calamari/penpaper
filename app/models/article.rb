@@ -2,11 +2,17 @@ class Article < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  attr_accessible :html, :published_at, :slug, :text, :title, :user_id
+  attr_accessible :html, :published_at, :slug, :text, :title, :user_id, :image
 
   has_and_belongs_to_many :tags, :uniq => true
 
   validates_presence_of :text, :title, :user_id
+
+  has_attached_file :image,
+    styles: { full: '900x900>' },
+    path: ":rails_root/public/system/:attachment/:id/:style/:hash.:extension",
+    url: "/system/:attachment/:id/:style/:hash.:extension",
+    hash_secret: "penpaper-hashing-thing"
 
   scope :draft, lambda { where(:published_at => nil) }
   scope :published, lambda { where('published_at IS NOT NULL') }

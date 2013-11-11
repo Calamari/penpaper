@@ -1,5 +1,8 @@
 <article itemscope itemtype="http://schema.org/BlogPosting">
-  <h1 itemprop="headline"><%= link_to article.title, article_path(article) %></h1>
+  <h1 itemprop="headline">
+    <%= tag :img, src: article.image if article.image.present? %>
+    <%= link_to article.title, article_path(article) %>
+  </h1>
 
   <footer>
     <time datetime="<%= article.created_at.to_datetime.to_s %>" itemprop="datePublished"><%= article.published_at.strftime('%d.%m.%Y - %H:%M') %></time>

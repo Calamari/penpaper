@@ -11,6 +11,8 @@ gem 'kramdown'
 gem 'bcrypt-ruby' # bcrypt for has_secore_password
 gem 'friendly_id' # provide friednly urls
 
+gem "paperclip", "~> 3.5.2"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

@@ -13,7 +13,8 @@
 
   <p><%= f.text_field :title, :class => 'title', :placeholder => 'Enter a title' %></p>
   <p><%= f.text_area :text, placeholder: 'Write something using markdown' %></p>
-
+  <p><%= tag :img, src: @article.image.url %></p>
+  <p><%= f.file_field :image %></p>
   <!--p>
     <%= f.label :slug %>
     <%= f.text_field :slug, :class => 'slug', :placeholder => 'Enter-a-title' %>

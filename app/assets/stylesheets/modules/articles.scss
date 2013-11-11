@@ -8,6 +8,19 @@ article {
   h1 {
     @extend .main-header;
     margin-bottom: 0.08em;
+    position: relative;
+
+    > img {
+      width: 100%;
+    }
+
+    > img + a {
+      position: absolute;
+      bottom: 0.5em;
+      color: #fff;
+      right: 0.5em;
+      text-shadow: 0 0 6px #000;
+    }
   }
 
   footer {
