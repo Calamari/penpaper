@@ -4,16 +4,6 @@
     <%= link_to article.title, article_path(article) %>
   </h1>
 
-  <footer>
-    <time datetime="<%= article.created_at.to_datetime.to_s %>" itemprop="datePublished"><%= article.published_at.strftime('%d.%m.%Y - %H:%M') %></time>
-    <%- if article.author.homepage.present? -%>
-      <%= link_to article.author.name, article.author.homepage, itemprop: 'author' %>
-    <%- else -%>
-      <span itemprop="author"><%= article.author.name %></span>
-    <%- end -%>
-    <meta itemprop="url" content="<%= article_url(article) %>">
-  </footer>
-
   <div itemprop="articleBody">
     <%- if defined? teaser-%>
       <%= article.teaser_html.html_safe %>
@@ -24,7 +14,9 @@
   </div>
 
   <%- unless defined? teaser-%>
-    <div class="article-info">
+    <footer class="article-info">
+      <time datetime="<%= article.created_at.to_datetime.to_s %>" itemprop="datePublished"><%= article.published_at.strftime('%d.%m.%Y - %H:%M') %></time>
+      <meta itemprop="url" content="<%= article_url(article) %>">
       <%- if article.tags.present? -%>
         <strong>Tags:</strong>
         <ul class="tags">
@@ -41,6 +33,6 @@
 
         <%- end -%>
       <%- end -%>
-    </div>
+    </footer>
   <%- end -%>
 </article>

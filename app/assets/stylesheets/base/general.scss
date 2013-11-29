@@ -9,7 +9,6 @@
 
 * {
   box-sizing: border-box;
-  font-size: 20px;
 }
 
 body, html {
@@ -17,7 +16,7 @@ body, html {
   color: $black;
   font-family: $body-font;
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 200;
   line-height: 1.6em; // 28,8 px
 }
@@ -70,18 +69,21 @@ body, html {
   border-top: 1px solid $grey;
   margin-top: 1px;
 
-  .container {
+  > .container {
     padding: 1em 0 2em;
-    text-align: right;
+    text-align: left;
+
+    > p {
+      float: left;
+      font-size: 0.75em;
+    }
   }
 }
 
 /*= Page elements
  *---------------------------------------- */
 h1,
-h2,
-h3,
-h4 {
+h2 {
   font-family: $subheader-font;
 }
 
@@ -92,7 +94,7 @@ h1 {
   margin-bottom: 0.6em;
 
   a {
-    color: $black;
+    color: $headline;
     text-decoration: none;
   }
 }

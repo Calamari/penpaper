@@ -1,16 +1,14 @@
 @import "base/colors";
 
 .footer-menu {
+  clear: right;
   margin-bottom: 0;
 
   li {
     display: inline;
     font-size: 0.75em;
     margin: 0 1em;
-
-    &:first-child {
-      float: right;
-    }
+    float: right;
   }
 
   a {

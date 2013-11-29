@@ -24,14 +24,15 @@ article {
   }
 
   footer {
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     color: $grey;
     font-size: 0.9em;
     margin-bottom: 1.8em;
+    padding: 0 1em;
 
     time {
-      &:after {
-        content: ' – ';
-      }
+      float: right;
     }
 
     a {
@@ -48,8 +49,4 @@ article {
     list-style-type: decimal;
     padding-left: 1.5em;
   }
-}
-
-.article-info {
-  font-size: 0.8em;
 }

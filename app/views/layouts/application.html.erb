@@ -23,7 +23,7 @@
 
   <footer class="page-footer">
     <div class="container">
-      aefkorpkioko
+      <p>A Website by <a href="http://jaz-lounge.com">Georg Tavonius</a></p>
       <ul class="footer-menu">
         <li><strong>Blog</strong></li>
         <li><%= link_to 'Startpage', root_path %></li>
@@ -32,6 +32,9 @@
       <ul class="footer-menu">
         <li><strong>User</strong></li>
         <%- if current_user -%>
+          <%- if @article.present? -%>
+            <li><%= link_to 'Edit this post', edit_article_path(@article) %></li>
+          <%- end -%>
           <li><%= link_to 'Write a post', new_article_path %></li>
           <li><%= link_to 'Logout', session_path(:id => current_user.id), :method => 'delete' %></li>
         <%- else -%>
