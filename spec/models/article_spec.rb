@@ -16,10 +16,16 @@ describe Article do
 
   describe "#publish" do
     let(:article) { Fabricate(:article) }
+    let(:published_article) { Fabricate(:published_article, published_at: 3.days.ago) }
 
     it "sets published_at attribute" do
       article.publish
       expect(article.published_at).not_to be nil
+    end
+
+    it "does not change published_at attribute if already set" do
+      published_article.publish
+      expect(published_article.published_at.to_i).to eql 3.days.ago.to_i
     end
   end
 

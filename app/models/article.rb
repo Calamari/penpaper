@@ -25,7 +25,7 @@ class Article < ActiveRecord::Base
   end
 
   def publish
-    self.published_at = Time.now
+    self.published_at ||= Time.now
   end
 
   def unpublish
