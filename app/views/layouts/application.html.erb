@@ -39,7 +39,7 @@
       <ul class="footer-menu">
         <li><strong>User</strong></li>
         <%- if current_user -%>
-          <%- if @article.present? -%>
+          <%- if @article.present? && @article.id -%>
             <li><%= link_to 'Edit this post', edit_article_path(@article) %></li>
           <%- end -%>
           <li><%= link_to 'Write a post', new_article_path %></li>
