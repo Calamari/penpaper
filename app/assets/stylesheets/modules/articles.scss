@@ -40,7 +40,8 @@ article {
     color: $grey;
     font-size: 0.9em;
     margin-bottom: 1.8em;
-    padding: 0 1em;
+    overflow: hidden;
+    padding: 0 1em 0.5em;
 
     time {
       float: right;
@@ -48,6 +49,10 @@ article {
 
     a {
       color: $grey;
+    }
+
+    .share-icons {
+      float: right;
     }
   }
 
