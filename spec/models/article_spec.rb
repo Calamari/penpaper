@@ -149,10 +149,19 @@ describe Article do
 
   describe :open_graph do
     let(:article) { Fabricate(:article).tap {|a| a.publish} }
-    subject { article.open_graph.render }
+    subject { article.open_graph.render_tags }
 
     it { should include(article.title) }
     it { should include(article.published_at.iso8601) }
     it { should include('article') }
+  end
+
+  describe :twitter_card do
+    let(:article) { Fabricate(:article).tap {|a| a.publish} }
+    subject { article.twitter_card.render_tags }
+
+    it { should include(article.title) }
+    it { should include('@Georg_Tavonius') }
+    it { should include('summary') }
   end
 end

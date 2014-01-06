@@ -46,11 +46,18 @@ class Article < ActiveRecord::Base
 
   def open_graph
     open_graph = OpenGraph.new type: 'article', title: title, url: Rails.application.routes.url_helpers.article_url(self)
-    open_graph.add 'article:author:first_name', 'Georg'
-    open_graph.add 'article:author:last_name', 'Tavonius'
-    open_graph.add 'article:tag', tags.map(&:name)
-    open_graph.add 'article:published_time', published_at.iso8601
+    open_graph.add('article:author:first_name', 'Georg')
+    open_graph.add('article:author:last_name', 'Tavonius')
+    open_graph.add('article:tag', tags.map(&:name))
+    open_graph.add('article:published_time', published_at.iso8601)
+    open_graph.add('image', image) if image.present?
     open_graph
+  end
+
+  def twitter_card
+    twitter_card = TwitterCard.new card: 'summary', creator: '@Georg_Tavonius', title: title
+    twitter_card.add('image', image) if image.present?
+    twitter_card
   end
 
   private

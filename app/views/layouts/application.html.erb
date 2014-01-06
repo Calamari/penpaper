@@ -4,7 +4,8 @@
   <title>Penpaper</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= csrf_meta_tags %>
-  <%= @open_graph.render if @open_graph.present? %>
+  <%= @open_graph.render_tags if @open_graph.present? %>
+  <%= @twitter_card.render_tags if @twitter_card.present? %>
 </head>
 <body>
   <header class="page-info">

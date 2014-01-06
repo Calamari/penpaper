@@ -30,6 +30,7 @@ class ArticlesController < ApplicationController
     @article = Article.published.find(params[:id])
 
     @open_graph = @article.open_graph
+    @twitter_card = @article.twitter_card
 
     if request.path != article_path(@article)
       redirect_to @article, status: :moved_permanently
