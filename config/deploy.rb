@@ -11,7 +11,7 @@ set :rvm_ruby_string, 'ruby-2.0.0-p0@penpaper'
 set :rvm_type, :user
 before 'deploy:setup', 'rvm:create_gemset'
 
-set :local_repository,  "/Users/georg.tavonius/Dropbox/coding/penpaper/.git"
+set :local_repository,  "/Users/calamari/Dropbox/coding/penpaper/.git"
 set :repository, "https://github.com/Calamari/penpaper.git"
 
 set :ssh_options, {:forward_agent => true}
@@ -55,5 +55,6 @@ after "deploy:update_code", "deploy:migrate"
 after "deploy:update_code", "deploy:assets:precompile"
 
 after 'deploy:restart' do
-  run 'curl blog.jaz-lounge.com > /dev/null'
+  # Warming up the engines...
+  run 'curl blog.jaz-lounge.com &> /dev/null'
 end
