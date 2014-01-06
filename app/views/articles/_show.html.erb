@@ -1,7 +1,7 @@
 <article itemscope itemtype="http://schema.org/BlogPosting">
   <h1 itemprop="headline">
-    <%= tag :img, src: article.image if article.image.present? %>
     <%= link_to article.title, article_path(article) %>
+    <%= tag :img, src: article.image if article.image.present? %>
   </h1>
 
   <div itemprop="articleBody">

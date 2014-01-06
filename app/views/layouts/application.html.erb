@@ -7,6 +7,13 @@
   <%= @open_graph.render if @open_graph.present? %>
 </head>
 <body>
+  <header class="page-info">
+    <div class="head">
+      <%= link_to 'Jaz-Lounge', root_url %>
+      - Where I put thoughts and things I want to remember.
+    </div>
+  </header>
+
   <div class="container">
     <% if flash[:success] %>
       <p class="flash-success"><%= flash[:success] %></p>

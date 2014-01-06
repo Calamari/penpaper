@@ -1,6 +1,8 @@
 @import "_media_queries";
 @import "_colors";
 @import "_fonts";
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
 
 @mixin transition($definition) {
           transition: $definition;
@@ -15,21 +17,64 @@ body, html {
   background: $bg-color;
   color: $black;
   font-family: $body-font;
-  text-align: center;
   font-size: 16px;
   font-weight: 200;
   line-height: 1.6em; // 28,8 px
+
+  @media screen and (max-width: $break-small) {
+    font-size: 14px;
+  }
+}
+
+.page-info {
+  > .head {
+    border: 1px solid #333;
+    @include border-radius(4px);
+    background: #fff;
+    margin: 20px;
+    padding: 10px 10px 10px 50px;
+    position: relative;
+
+    @media screen and (max-width: $break-medium) {
+      padding: 10px;
+      text-align: center;
+    }
+  }
+  z-index: 0;
+
+  &:before {
+    //background: $bg-side image-url('side-bg.jpg');
+    background: $bg-side url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAoGBgcHBwoICAoOCggKDhENCgoNERMPDxAPDxMWERISEhIRFhMWFxgXFhMdHR8fHR0pKCgoKSsrKysrKysrKyv/2wBDAQsKCg8ODxcRERcZFBIUGR8dHR0dHyMfHx8fHyMmIiAgICAiJiQlIyMjJSQoKCYmKCgrKysrKysrKysrKysrKyv/wAARCABkAGQDAREAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECB//EACcQAQABAwMEAgEFAAAAAAAAAAABESExQWFxUYGhsZHwwQJC0eHx/8QAFgEBAQEAAAAAAAAAAAAAAAAAAAIE/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A5gtkOwG3sDAAHsAD0ACdYBbAeYBK01BZApWATsCgUvyAByBuAACYr7BfMAk8gtgIBAXgDegGANQSNAPeQUAEBageQPsgdQTf5oC8gdfQGASfsAsgYkDAAHcEwCgAUBNONAXYDyB6A+AIoBoABEAngF97gAgLacgl43uCxtiQJzyBoCbAuQLxUErTQF0qBOAQFnproBIF7glP6BZkE/wF7gmlQUFgE0AAuB2uBpFI7AabAfbgbAmeegLcEpYFAgE2BQS3YFgCASlusAoGvUCwHsC06AT3ArQEBZ9ASACAtv5AxiQOKgbgAn4BQImAANdpBIpgF+yAB3A3BNeQUC4GeQKgVAz2AAyBaQOoG0/IF7dQPcAAmlgUACoJH4BZBf3Az+qQXWgFMgVAAiMAUyCVtXWwLTyDMyD/2Q==);
+    @include box-shadow(inset -2px 0 10px rgba(0,0,0, .4), inset -1px 0 0 rgba(255,255,255, .75));
+    border-right: 1px solid #333;
+    content: '';
+    color: $side-color;
+    width: 10%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+  }
+
+  // &:after {
+  //   background: image-url('logo.png');
+  //   content: '';
+  //   position: fixed;
+  //   top: 10px;
+  //   left: 10px;
+  //   width: 50px;
+  //   height: 71px;
+  // }
 }
 
 .container {
-  margin: 0 auto;
+  margin: 0 0 0 10%;
   position: relative;
   text-align: left;
-  width: 40em;
+  max-width: 36em;
   padding-bottom: 2em;
+  padding-left: 1em;
   @include transition(all 0.5s);
   @media screen and (max-width: $break-medium) {
-    width: 100%;
     padding: 0 1em 1em;
   }
 }
@@ -70,7 +115,7 @@ body, html {
   margin-top: 1px;
 
   > .container {
-    padding: 1em 0 2em;
+    padding: 1em 0 2em 0.5em;
     text-align: left;
 
     > p {
@@ -100,6 +145,7 @@ h1 {
 }
 
 h2 {
+  clear: left;
   font-size: 1.4em;
   font-weight: 400;
 }

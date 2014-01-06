@@ -2,6 +2,7 @@
 
 
 article {
+  clear: both;
   margin-bottom: 3em;
   padding-top: 3em;
 
@@ -11,15 +12,25 @@ article {
     position: relative;
 
     > img {
-      width: 100%;
-    }
+      @include transition(margin 0.3s);
 
-    > img + a {
-      position: absolute;
-      bottom: 0.5em;
-      color: #fff;
-      left: 0.5em;
-      text-shadow: 0 0 6px #000;
+      background: $img-bg;
+      float: left;
+      width: 300px;
+      margin: 0 0.5em 0.5em -120px;
+      padding: 3px;
+      border: 1px solid #ccc;
+      @include border-radius(4px);
+
+      @media screen and (max-width: 1080px) {
+        margin: 0 0.5em 0.5em -80px;
+      }
+
+      @media screen and (max-width: 660px) {
+        float: none;
+        margin: 0.5em 0 0 0;
+        max-width: 100%;
+      }
     }
   }
 
